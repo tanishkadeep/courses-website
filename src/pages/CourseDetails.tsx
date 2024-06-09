@@ -64,15 +64,13 @@ export const CourseDetails = () => {
         <div>
           <b>Prerequisites:</b> {course.prerequisites.join(", ")}
         </div>
-        <h3 className="text-2xl font-bold mt-8">Syllabus</h3>
+        <div className="text-2xl font-extrabold mt-8">Syllabus</div>
         <div className="mt-2">
-          {course.syllabus.map((item, index) => (
-            <div key={index} className="mb-2">
-              <h4 className="font-bold">Week {item.week}</h4>
-              <div>
-                <b>Topic:</b> {item.topic}
-              </div>
-              <div>{item.content}</div>
+          {course.syllabus.map((item) => (
+            <div className="my-3">
+              <div className="font-bold">Week {item.week}</div>
+              <div className="font-semibold">Topic: {item.topic}</div>
+              <div className="italic">{item.content}</div>
             </div>
           ))}
         </div>

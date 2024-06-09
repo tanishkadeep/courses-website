@@ -5,6 +5,7 @@ import {
   selectAllCourses,
   getCoursesStatus,
   fetchCourses,
+  getCoursesError,
 } from "../features/courses/coursesSlice";
 import { Link } from "react-router-dom";
 
@@ -12,6 +13,7 @@ export const Home = () => {
   const courses = useSelector(selectAllCourses);
   const dispatch: AppDispatch = useDispatch();
   const courseStatus = useSelector(getCoursesStatus);
+  const error = useSelector(getCoursesError);
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
@@ -28,29 +30,39 @@ export const Home = () => {
 
   let content;
 
-  content = filteredCourses.map((course) => (
-    <div className="p-4 mx-4 my-8 md:mx-10 border rounded-lg shadow-md">
-      <Link
-        to={`/courses/${course.id}`}
-        className="flex flex-col md:flex-row items-center"
-      >
-        <div>
-          <img
-            src={course.thumbnail}
-            alt={course.name}
-            className="min-w-40 md:max-w-80"
-          />
-        </div>
-        <div className="md:pl-10 w-full pt-5 md:pt-0">
-          <div className="text-3xl font-extrabold">{course.name}</div>
-          <div className="py-2 italic text-gray-700 font-semibold">
-            {course.instructor}
+  if (courseStatus === "loading") {
+    content = (
+      <div className=" flex justify-center items-center h-[80vh] text-xl font-bold text-gray-400">
+        Loading...
+      </div>
+    );
+  } else if (courseStatus === "succeeded") {
+    content = filteredCourses.map((course) => (
+      <div className="p-4 mx-4 my-8 md:mx-10 border rounded-lg shadow-md">
+        <Link
+          to={`/courses/${course.id}`}
+          className="flex flex-col md:flex-row items-center"
+        >
+          <div>
+            <img
+              src={course.thumbnail}
+              alt={course.name}
+              className="min-w-40 md:max-w-80"
+            />
           </div>
-          <div className="text-sm ">{course.description}</div>
-        </div>
-      </Link>
-    </div>
-  ));
+          <div className="md:pl-10 w-full pt-5 md:pt-0">
+            <div className="text-3xl font-extrabold">{course.name}</div>
+            <div className="py-2 italic text-gray-700 font-semibold">
+              {course.instructor}
+            </div>
+            <div className="text-sm ">{course.description}</div>
+          </div>
+        </Link>
+      </div>
+    ));
+  } else if (courseStatus === "failed") {
+    content = <div className="text-center text-red-500">{error}</div>;
+  }
 
   return (
     <div className=" mx-5 lg:mx-40 my-8">

@@ -1,8 +1,40 @@
+import { useEffect, useState } from "react";
+import { AppDispatch } from "../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectAllCourses,
+  getCoursesStatus,
+  fetchCourses,
+} from "../features/courses/coursesSlice";
+
 export const Home = () => {
+  const courses = useSelector(selectAllCourses);
+  const dispatch: AppDispatch = useDispatch();
+  const courseStatus = useSelector(getCoursesStatus);
+  const [filter, setFilter] = useState("");
+
+  useEffect(() => {
+    if (courseStatus === "idle") {
+      dispatch(fetchCourses());
+    }
+  }, [courseStatus, dispatch]);
+
+  const filteredCourses = courses.filter(
+    (course) =>
+      course.name.toLowerCase().includes(filter.toLowerCase()) ||
+      course.instructor.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  let content;
+
+  content = filteredCourses.map((course) => JSON.stringify(course));
+
   return (
-    <div className="mx-40 my-8">
-      <div className="flex justify-between items-center px-5">
-        <div className="text-5xl font-extrabold">All Courses</div>
+    <div className=" mx-5 lg:mx-40 my-8">
+      <div className="flex flex-col lg:flex-row justify-between items-center px-5">
+        <div className="text-5xl font-extrabold lg:pb-0 pb-5 text-center">
+          All Courses
+        </div>
         <div className="flex items-center rounded-md bg-gray-100 px-4 py-2">
           <div>
             <svg
@@ -23,13 +55,17 @@ export const Home = () => {
           <div className="pl-4">
             <input
               type="text"
-              className="bg-gray-100 w-80 outline-none"
-              placeholder="Search courses "
+              className="bg-gray-100 w-48 sm:w-80 outline-none"
+              placeholder="Search courses"
+              onChange={(e) => {
+                setFilter(e.target.value);
+              }}
             />
           </div>
         </div>
       </div>
       <div className="mt-5 border-4 border-b-gray-300 rounded-md"></div>
+      <div>{content}</div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchCoursesAPI } from "./coursesAPI";
+import { RootState } from "../../app/store";
 
 export interface Course {
   id: string;
@@ -54,5 +55,9 @@ const coursesSlice = createSlice({
       });
   },
 });
+
+export const selectAllCourses = (state: RootState) => state.courses.courses;
+export const getCoursesStatus = (state: RootState) => state.courses.status;
+export const getCoursesError = (state: RootState) => state.courses.error;
 
 export default coursesSlice.reducer;

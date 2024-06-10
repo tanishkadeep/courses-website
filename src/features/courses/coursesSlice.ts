@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchCoursesAPI } from "./coursesAPI";
 import { RootState } from "../../app/store";
 
@@ -40,7 +40,16 @@ export const fetchCourses = createAsyncThunk(
 const coursesSlice = createSlice({
   name: "courses",
   initialState,
-  reducers: {},
+  reducers: {
+    markCourseAsCompleted: (state, action: PayloadAction<string>) => {
+      const course = state.courses.find(
+        (course) => course.id === action.payload
+      );
+      if (course) {
+        course.progress = 100;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCourses.pending, (state) => {
@@ -56,6 +65,8 @@ const coursesSlice = createSlice({
       });
   },
 });
+
+export const { markCourseAsCompleted } = coursesSlice.actions;
 
 export const selectAllCourses = (state: RootState) => state.courses.courses;
 export const getCoursesStatus = (state: RootState) => state.courses.status;

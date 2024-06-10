@@ -6,6 +6,7 @@ import {
   selectAllCourses,
   getCoursesStatus,
   fetchCourses,
+  markCourseAsCompleted,
 } from "../features/courses/coursesSlice";
 import { ProgressBar } from "../components/ProgressBar";
 import { Link } from "react-router-dom";
@@ -19,11 +20,15 @@ export const Dashboard = () => {
     if (courseStatus === "idle") {
       dispatch(fetchCourses());
     }
-  }, [courseStatus, dispatch]);
+  }, [courseStatus, courses]);
 
   const enrolledCourses = courses.filter(
     (course) => course.enrollmentStatus === "Enrolled"
   );
+
+  const handleMarkAsCompleted = (courseId: string) => {
+    dispatch(markCourseAsCompleted(courseId));
+  };
 
   return (
     <div>
@@ -56,10 +61,13 @@ export const Dashboard = () => {
                   {course.progress}%
                 </div>
               </div>
-              <div className="bg-gray-100 cursor-pointer flex justify-center items-center py-2 font-semibold hover:bg-gray-200">
-                {" "}
-                <button>Mark as completed</button>
-              </div>
+
+              <button
+                onClick={() => handleMarkAsCompleted(course.id)}
+                className="bg-gray-100 cursor-pointer py-2 font-semibold hover:bg-gray-200 w-full"
+              >
+                Mark as completed
+              </button>
             </div>
           ))}
         </div>

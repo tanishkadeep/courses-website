@@ -39,29 +39,33 @@ export const Home = () => {
       </div>
     );
   } else if (courseStatus === "succeeded") {
-    content = filteredCourses.map((course) => (
-      <div className="p-4 mx-4 my-8 md:mx-10 border rounded-lg shadow-md">
-        <Link
-          to={`/courses/${course.id}`}
-          className="flex flex-col md:flex-row items-center"
-        >
-          <div>
-            <img
-              src={course.thumbnail}
-              alt={course.name}
-              className="min-w-40 md:max-w-80"
-            />
-          </div>
-          <div className="md:pl-10 w-full pt-5 md:pt-0">
-            <div className="text-3xl font-extrabold">{course.name}</div>
-            <div className="py-2 italic text-gray-700 font-semibold">
-              {course.instructor}
+    if (filteredCourses.length == 0) {
+      content = <div className="mt-10 text-center font-extrabold text-red-600 text-xl">No Courses Found</div>;
+    } else {
+      content = filteredCourses.map((course) => (
+        <div className="p-4 mx-4 my-8 md:mx-10 border rounded-lg shadow-md">
+          <Link
+            to={`/courses/${course.id}`}
+            className="flex flex-col md:flex-row items-center"
+          >
+            <div>
+              <img
+                src={course.thumbnail}
+                alt={course.name}
+                className="min-w-40 md:max-w-80"
+              />
             </div>
-            <div className="text-sm ">{course.description}</div>
-          </div>
-        </Link>
-      </div>
-    ));
+            <div className="md:pl-10 w-full pt-5 md:pt-0">
+              <div className="text-3xl font-extrabold">{course.name}</div>
+              <div className="py-2 italic text-gray-700 font-semibold">
+                {course.instructor}
+              </div>
+              <div className="text-sm ">{course.description}</div>
+            </div>
+          </Link>
+        </div>
+      ));
+    }
   } else if (courseStatus === "failed") {
     content = <div className="text-center text-red-500">{error}</div>;
   }
@@ -104,6 +108,7 @@ export const Home = () => {
           </div>
         </div>
         <div className="mt-5 mb-10 border-4 border-b-gray-300 rounded-md"></div>
+
         <div className="min min-h-[60vh]">{content}</div>
       </div>
       <Footer />

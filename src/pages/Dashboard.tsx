@@ -8,6 +8,7 @@ import {
   fetchCourses,
 } from "../features/courses/coursesSlice";
 import { ProgressBar } from "../components/ProgressBar";
+import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
   const courses = useSelector(selectAllCourses);
@@ -31,7 +32,10 @@ export const Dashboard = () => {
         <div className="text-4xl font-extrabold mb-8">My Courses</div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center items-center">
           {enrolledCourses.map((course) => (
-            <div className="border-2  border-gray-300 rounded-lg">
+            <Link
+              to={`/courses/${course.id}`}
+              className="border-2 border-gray-300 rounded-lg"
+            >
               <img
                 src={course.thumbnail}
                 alt={course.name}
@@ -52,7 +56,7 @@ export const Dashboard = () => {
                 {" "}
                 <button>Mark as completed</button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

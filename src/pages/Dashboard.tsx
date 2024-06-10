@@ -42,11 +42,11 @@ export const Dashboard = () => {
             <ClipLoader size={40} color={"#123abc"} loading={true} />
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center items-center">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {enrolledCourses.map((course) => (
               <div
                 key={course.id}
-                className="border-2 border-gray-300 rounded-lg"
+                className="border-2 border-gray-300 rounded-lg flex flex-col h-full"
               >
                 <Link to={`/courses/${course.id}`}>
                   <img
@@ -55,7 +55,7 @@ export const Dashboard = () => {
                     className="w-full h-44 sm:h-56 object-cover rounded-t-lg"
                   />
                 </Link>
-                <div className="p-4">
+                <div className="p-4 flex-1 flex flex-col">
                   <Link
                     to={`/courses/${course.id}`}
                     className="text-xl font-bold"
@@ -63,12 +63,12 @@ export const Dashboard = () => {
                     {course.name}
                   </Link>
                   <div className="italic py-2">{course.instructor}</div>
-                  <div className="text-sm">Due: {course.duration}</div>
-                </div>
-                <div className="px-4 flex justify-between items-center mb-6">
-                  <ProgressBar progress={course.progress} />
-                  <div className="pl-4 text-sm font-medium">
-                    {course.progress}%
+                  <div className="text-sm pb-4">Due: {course.duration}</div>
+                  <div className="mt-auto flex pb-2 justify-between items-center">
+                    <ProgressBar progress={course.progress} />
+                    <div className="pl-4 text-sm font-medium">
+                      {course.progress}%
+                    </div>
                   </div>
                 </div>
                 <button
@@ -82,7 +82,7 @@ export const Dashboard = () => {
           </div>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

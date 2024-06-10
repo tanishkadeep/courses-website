@@ -32,17 +32,21 @@ export const Dashboard = () => {
         <div className="text-4xl font-extrabold mb-8">My Courses</div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center items-center">
           {enrolledCourses.map((course) => (
-            <Link
-              to={`/courses/${course.id}`}
-              className="border-2 border-gray-300 rounded-lg"
-            >
-              <img
-                src={course.thumbnail}
-                alt={course.name}
-                className="w-full  h-44 sm:h-56  object-cover rounded-t-lg"
-              />
+            <div className="border-2 border-gray-300 rounded-lg">
+              <Link to={`/courses/${course.id}`}>
+                <img
+                  src={course.thumbnail}
+                  alt={course.name}
+                  className="w-full  h-44 sm:h-56  object-cover rounded-t-lg"
+                />
+              </Link>
               <div className="p-4">
-                <div className="text-xl font-bold">{course.name}</div>
+                <Link
+                  to={`/courses/${course.id}`}
+                  className="text-xl font-bold"
+                >
+                  {course.name}
+                </Link>
                 <div className="italic py-2">{course.instructor}</div>
                 <div className="text-sm">Due: {course.duration}</div>
               </div>
@@ -56,7 +60,7 @@ export const Dashboard = () => {
                 {" "}
                 <button>Mark as completed</button>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

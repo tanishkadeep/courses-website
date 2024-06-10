@@ -12,6 +12,7 @@ export interface Course {
   duration: string;
   schedule: string;
   location: string;
+  progress: number;
   prerequisites: string[];
   syllabus: { week: number; topic: string; content: string }[];
 }

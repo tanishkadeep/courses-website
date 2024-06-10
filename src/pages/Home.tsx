@@ -21,7 +21,7 @@ export const Home = () => {
     if (courseStatus === "idle") {
       dispatch(fetchCourses());
     }
-  }, [courseStatus, dispatch]);
+  }, [courseStatus]);
 
   const filteredCourses = courses.filter(
     (course) =>

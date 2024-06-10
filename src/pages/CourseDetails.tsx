@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { AppDispatch } from "../app/store";
 import { Appbar } from "../components/Appbar";
 import { Footer } from "../components/Footer";
+import { ClipLoader } from "react-spinners";
 
 export const CourseDetails = () => {
   const { courseId } = useParams<{ courseId: string }>();
@@ -23,7 +24,16 @@ export const CourseDetails = () => {
   }, [courseStatus]);
 
   const course = courses.find((c) => c.id === courseId);
-
+  if (courseStatus === "loading")
+    return (
+      <div>
+        <Appbar />
+        <div className="flex justify-center items-center h-[64vh]">
+          <ClipLoader size={40} color={"#123abc"} loading={true} />
+        </div>
+        <Footer />
+      </div>
+    );
   if (!course) {
     return (
       <div className="mt-40 font-extrabold text-2xl text-center text-red-500">
@@ -84,7 +94,7 @@ export const CourseDetails = () => {
           </details>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

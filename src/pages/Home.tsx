@@ -34,7 +34,7 @@ export const Home = () => {
 
   if (courseStatus === "loading") {
     content = (
-      <div className=" flex justify-center items-center h-[80vh] text-xl font-bold text-gray-400">
+      <div className=" flex justify-center items-center h-[70vh] text-xl font-bold text-gray-400">
         Loading...
       </div>
     );

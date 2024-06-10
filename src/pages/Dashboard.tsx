@@ -38,7 +38,7 @@ export const Dashboard = () => {
       <div className="my-16 md:mx-24 sm:mx-16 mx-8 lg:mx-32">
         <div className="text-4xl font-extrabold mb-8">My Courses</div>
         {courseStatus === "loading" ? (
-          <div className="flex justify-center items-center h-64">
+          <div className="flex justify-center items-center h-[47vh]">
             <ClipLoader size={40} color={"#123abc"} loading={true} />
           </div>
         ) : (

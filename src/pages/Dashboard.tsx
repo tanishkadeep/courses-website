@@ -11,6 +11,7 @@ import {
 import { ProgressBar } from "../components/ProgressBar";
 import { Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { Footer } from "../components/Footer";
 
 export const Dashboard = () => {
   const courses = useSelector(selectAllCourses);
@@ -81,6 +82,7 @@ export const Dashboard = () => {
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   );
 };

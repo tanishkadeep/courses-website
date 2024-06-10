@@ -9,6 +9,7 @@ import {
 } from "../features/courses/coursesSlice";
 import { Link } from "react-router-dom";
 import { Appbar } from "../components/Appbar";
+import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const courses = useSelector(selectAllCourses);
@@ -105,6 +106,7 @@ export const Home = () => {
         <div className="mt-5 mb-10 border-4 border-b-gray-300 rounded-md"></div>
         <div>{content}</div>
       </div>
+      <Footer/>
     </div>
   );
 };

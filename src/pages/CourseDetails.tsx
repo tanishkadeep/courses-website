@@ -8,6 +8,7 @@ import {
 import { useEffect } from "react";
 import { AppDispatch } from "../app/store";
 import { Appbar } from "../components/Appbar";
+import { Footer } from "../components/Footer";
 
 export const CourseDetails = () => {
   const { courseId } = useParams<{ courseId: string }>();
@@ -83,6 +84,7 @@ export const CourseDetails = () => {
           </details>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

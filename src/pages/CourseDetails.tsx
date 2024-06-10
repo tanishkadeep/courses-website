@@ -7,6 +7,7 @@ import {
 } from "../features/courses/coursesSlice";
 import { useEffect } from "react";
 import { AppDispatch } from "../app/store";
+import { Appbar } from "../components/Appbar";
 
 export const CourseDetails = () => {
   const { courseId } = useParams<{ courseId: string }>();
@@ -31,53 +32,56 @@ export const CourseDetails = () => {
   }
 
   return (
-    <div className="my-16 mx-16 sm:mx-24 md:mx-40 flex flex-col justify-center items-center">
-      <div>
-        <img
-          src={course.thumbnail}
-          alt={course.name}
-          className="rounded-md mb-10 md:max-w-lg"
-        />
-      </div>
-      <div className="text-lg">
-        <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8">
-          {course.name}
-        </div>
+    <div>
+      <Appbar />
+      <div className="my-16 mx-16 sm:mx-24 md:mx-40 flex flex-col justify-center items-center">
         <div>
-          <b>Instructor:</b> {course.instructor}
+          <img
+            src={course.thumbnail}
+            alt={course.name}
+            className="rounded-md mb-10 md:max-w-lg"
+          />
         </div>
-        <div>
-          <b>Description:</b> {course.description}
-        </div>
-        <div>
-          <b>Enrollment Status:</b> {course.enrollmentStatus}
-        </div>
-        <div>
-          <b>Duration:</b> {course.duration}
-        </div>
-        <div>
-          <b>Schedule:</b> {course.schedule}
-        </div>
-        <div>
-          <b>Location:</b> {course.location}
-        </div>
-        <div>
-          <b>Prerequisites:</b> {course.prerequisites.join(", ")}
-        </div>
-        <details>
-          <summary className="text-xl font-extrabold mt-8 cursor-pointer">
-            Syllabus
-          </summary>
-          <div className="mt-2">
-            {course.syllabus.map((item) => (
-              <div className="my-3">
-                <div className="font-bold">Week {item.week}</div>
-                <div className="font-semibold">Topic: {item.topic}</div>
-                <div className="italic">{item.content}</div>
-              </div>
-            ))}
+        <div className="text-lg">
+          <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8">
+            {course.name}
           </div>
-        </details>
+          <div>
+            <b>Instructor:</b> {course.instructor}
+          </div>
+          <div>
+            <b>Description:</b> {course.description}
+          </div>
+          <div>
+            <b>Enrollment Status:</b> {course.enrollmentStatus}
+          </div>
+          <div>
+            <b>Duration:</b> {course.duration}
+          </div>
+          <div>
+            <b>Schedule:</b> {course.schedule}
+          </div>
+          <div>
+            <b>Location:</b> {course.location}
+          </div>
+          <div>
+            <b>Prerequisites:</b> {course.prerequisites.join(", ")}
+          </div>
+          <details>
+            <summary className="text-xl font-extrabold mt-8 cursor-pointer">
+              Syllabus
+            </summary>
+            <div className="mt-2">
+              {course.syllabus.map((item) => (
+                <div className="my-3">
+                  <div className="font-bold">Week {item.week}</div>
+                  <div className="font-semibold">Topic: {item.topic}</div>
+                  <div className="italic">{item.content}</div>
+                </div>
+              ))}
+            </div>
+          </details>
+        </div>
       </div>
     </div>
   );

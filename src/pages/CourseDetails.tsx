@@ -19,7 +19,7 @@ export const CourseDetails = () => {
     if (courseStatus === "idle") {
       dispatch(fetchCourses());
     }
-  }, [courseStatus, dispatch]);
+  }, [courseStatus]);
 
   const course = courses.find((c) => c.id === courseId);
 

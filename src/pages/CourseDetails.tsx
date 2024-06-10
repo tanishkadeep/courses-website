@@ -45,7 +45,7 @@ export const CourseDetails = () => {
   return (
     <div>
       <Appbar />
-      <div className="my-16 mx-16 sm:mx-24 md:mx-40 flex flex-col justify-center items-center">
+      <div className="my-16 mx-16 sm:mx-24 md:mx-40 flex flex-col justify-center items-center min-h-[70vh]">
         <div>
           <img
             src={course.thumbnail}

@@ -104,9 +104,9 @@ export const Home = () => {
           </div>
         </div>
         <div className="mt-5 mb-10 border-4 border-b-gray-300 rounded-md"></div>
-        <div>{content}</div>
+        <div className="min min-h-[60vh]">{content}</div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

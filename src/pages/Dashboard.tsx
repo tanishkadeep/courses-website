@@ -35,7 +35,7 @@ export const Dashboard = () => {
   return (
     <div>
       <Appbar />
-      <div className="my-16 md:mx-24 sm:mx-16 mx-8 lg:mx-32">
+      <div className="my-16 md:mx-24 sm:mx-16 mx-8 lg:mx-32 min-h-[70vh]">
         <div className="text-4xl font-extrabold mb-8">My Courses</div>
         {courseStatus === "loading" ? (
           <div className="flex justify-center items-center h-[47vh]">

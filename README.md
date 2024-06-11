@@ -1,30 +1,61 @@
-# React + TypeScript + Vite
+# Course Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+This project is a course listing and management website built with Tailwind CSS, TypeScript, and React. It provides a platform for users to browse through various courses, view detailed information, and manage their enrolled courses. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Course Listing Page**: Displays a scrollable list of courses fetched from a dummy API.
+  - Search functionality based on course name or instructor.
+  - Clickable courses to view detailed information.
+- **Course Details Screen**: Provides detailed information about the selected course, including:
+  - Course name
+  - Instructor's name
+  - Description
+  - Enrollment status
+  - Course duration
+  - Schedule
+  - Location
+  - Pre-requisites
+  - Expandable syllabus section
+- **Student Dashboard**: Displays the courses that a student is enrolled in with a user-friendly interface.
+  - Course name, instructor name, thumbnail, due date, and a progress bar.
+  - Feature to mark courses as completed.
+- **Advanced State Management**: Utilizes Redux for effective state management across the application.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **State Management**: Redux
+- **Backend**: Dummy API (for sample data)
+- **Build Tool**: Vite
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Setup Instructions
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/tanishkadeep/courses-website 
+   cd course-website 
+   ```
+
+2. Install dependencies
+    ```bash
+    npm install
+    ```
+
+3. Run the application
+    ```bash
+   npm run dev
+    ```
+
+4. Build for production
+    ```bash
+   npm run build
+    ```
+
+## Demo Video
+
+[Watch the demo video here](https://drive.google.com/file/d/1nnrQkuc5UVTnCMb-5a0d24Ly_gBq1mQU/view?usp=sharing)
+

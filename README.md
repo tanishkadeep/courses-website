@@ -59,3 +59,7 @@ This project is a course listing and management website built with Tailwind CSS,
 
 [Watch the demo video here](https://drive.google.com/file/d/1nnrQkuc5UVTnCMb-5a0d24Ly_gBq1mQU/view?usp=sharing)
 
+
+## Contact
+
+Tanishka Deep - [tanishkadeep09@gmail.com](mailto:tanishkadeep09@gmail.com)
